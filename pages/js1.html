@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<head>
+    <title>User Registration</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script type="text/javascript" src = "../js/script.js"></script>
+</head>
+<body onload="pageSet()">
+    <div class="header">
+        <div>
+            <img src="../resourses/user.png" alt="Logo" height="50px" width="50px" >
+        </div>
+        <div>
+            <h1>E-MART</h1>
+        </div>
+    </div>
+    <img src="../resourses/banner.jpg" alt="banner" class="banner" >
+    <hr>
+    <form action="" name="myForm" method="POST" onsubmit="return validateForm()"  >
+            <fieldset>
+                <legend>Personal information:</legend>
+                <div class="flexbox">
+                <div>
+                <table  class="formt" >
+                    <tr>
+                        <td><b>First Name</b></td>
+                        <td><input type="text" name="fname" placeholder="Your first name.." ></td>
+                    </tr>
+                    <tr>
+                            <td><b>Middle Name</b></td>
+                            <td><input type="text" name="mname" placeholder="Your middle name.."></td>
+                    </tr>
+                    <tr>
+                            <td><b>Last Name</b></td>
+                            <td><input type="text" name="lname" placeholder="Your last name.." ></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Email</b></td>
+                        <td><input type="email" name="mail" placeholder="xyz@abc.com" ></td>
+                    </tr>
+                    <tr>
+                            <td><b>Phone No.</b></td>
+                            <td><input type="text" name="phno" placeholder="12345....." ></td>
+                    </tr>
+                    <tr>
+                            <td><b>Password</b></td>
+                            <td><input type="password" name="pass" placeholder="Password" ></td>
+                    </tr>
+                    <tr>
+                            <td><b>Re-enter Password</b></td>
+                            <td><input type="password" name="repass" placeholder="re-enter password" ></td>
+                    </tr>
+                    <tr>
+                            <td><b>Date Of Birth</b></td>
+                            <td><input type="date" name="dob" id="dob" ><span id="dateerror"></span></td>
+                    </tr>
+                    <tr>
+                            <td><b>Gender</b></td>
+                            <td >
+                            <input type="radio" name="gender" value="male" checked> Male
+                            <input type="radio" name="gender" value="female"> Female
+                            <input type="radio" name="gender" value="other"> Other
+                            </td>
+                    </tr>
+                    </table>
+                    </div>
+                    <div>
+                    <table  class="formt" >
+                    <tr>
+                            <td><b>Current Address</b></td>
+                            <td>
+                                <input type="text" name="cadd" placeholder="address...">
+                                <input type="text" name="ccity" placeholder="city">
+                                <input type="text" name="czip" placeholder="Zip-Code">                               
+                                    <select  name="ccountry"  id="ccountrySelect" onchange="makeSubmenu(this)">
+                                        <option value="" >country</option>
+                                        <option value="USA" >USA</option>
+                                        <option value="Singapore" >Singapore</option>
+                                    </select>
+                                    <select name="cstate" id="cstateSelect">
+                                            <option value="" >state</option>
+                                        </select><span id="ccountryerror"></span></td>
+                                
+                    </tr>
+                    <tr>
+                            <td><b>Permanent Address</b></td>
+                            <td>
+                                <input type="text" name="padd" placeholder="address..." ><br>
+                                <input type="text" name="pcity" placeholder="city" ><br>
+                                <input type="text" name="pzip" placeholder="Zip-Code">                               
+                                    <select  name="pcountry" id="pcountrySelect" onchange="makeSubmenu(this)">
+                                        <option value="" >country</option>
+                                        <option value="USA" >USA</option>
+                                        <option value="Singapore" >Singapore</option>
+                                    </select>
+                                    <select name="pstate" id="pstateSelect">
+                                            <option value="" >state</option>
+                                        </select><span id="pcountryerror"></span></td>
+                    </tr>
+                    <tr>
+                            <td><b>Personal Interests</b></td>
+                            <td><textarea name="interests" placeholder="like sports, books, computer & software, fashion, photography etc... "></textarea></td>
+                    </tr>
+                </table>
+                
+                
+            </div>
+            </div>
+            <div class="captcha">
+                <span><p>SOLVE :</p</span>
+                <span id="expression"></span>                
+                <input  type="number" id="result">
+                <img src="../resourses/refresh.jpg" alt="refresh"  id="refresh" onclick="refreshCaptcha()">
+                <span id="captchaerror" style="color:red;display:none;">*Wrong Answer</span>               
+            </div>
+            <input type="submit" value="Submit">
+            </fieldset>
+    </form>
+   
+    <div class="footer">
+            <div align="center">
+                    <img src="../resourses/user.png" alt="Logo" height="50px" width="50px" ><b>E-MART</b><br>
+                    <em>@all rights reserved</em>
+            </div>
+    </div>
+    
+
+</body>
