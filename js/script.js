@@ -42,6 +42,14 @@ function resetSelection() {
     document.getElementById("pcountrySelect").selectedIndex = 0;
     document.getElementById("pstateSelect").selectedIndex = 0;
 }
+function addressCopy(){
+    document.myForm.padd.value=document.myForm.cadd.value;
+    document.myForm.pcity.value=document.myForm.ccity.value;
+    document.myForm.pzip.value=document.myForm.czip.value;
+    document.myForm.pcountry.value=document.myForm.ccountry.value;
+    makeSubmenu(document.myForm.pcountry);
+    document.myForm.pstate.value=document.myForm.cstate.value;
+}
 function validateForm(){
     var fname= document.myForm.fname ;
     var mname= document.myForm.mname ;
@@ -145,6 +153,7 @@ function checkCaptcha(result){
         answer= op1 * op2;
     }
     if(result.value == answer){
+        document.getElementById("captchaerror").style.display="none";
         result.style.border="1px solid rgb(11, 243, 116)";
         return false;
     }
@@ -214,7 +223,7 @@ function validAdd(add){
 function validMail(mail){
     var length=mail.value.length;
     if(length > 0){
-        var patt = /^([\w_.]+)@(\w+)\.([a-zA-Z]+)$/;
+        var patt = /^([\w_.]+)@(\S)+\.([a-zA-Z]+)$/;
         if(mail.value.match(patt))
         {
         mail.style.border="1px solid rgb(11, 243, 116)";

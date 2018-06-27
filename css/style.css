@@ -17,6 +17,9 @@
     display:none;
     color: red;
 }
+#addresscopy{
+    width:20px;
+}
 .header{
     display: flex;
     flex-direction: column;
