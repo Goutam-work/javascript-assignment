@@ -223,7 +223,7 @@ function validAdd(add){
 function validMail(mail){
     var length=mail.value.length;
     if(length > 0){
-        var patt = /^([\w_.]+)@(\S)+\.([a-zA-Z]+)$/;
+        var patt = /^(\w[\w_.]+)@(\S)+\.([a-zA-Z]+)$/;
         if(mail.value.match(patt))
         {
         mail.style.border="1px solid rgb(11, 243, 116)";
