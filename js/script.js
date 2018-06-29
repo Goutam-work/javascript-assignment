@@ -23,8 +23,8 @@ function makeSubmenu(obj) {
 }
 var op1,op2,operator;
 function generateCaptcha(){
-    op1=getRandom(1,100);
-    op2=getRandom(1,100);
+    op1=getRandom(10,100);
+    op2=getRandom(10,100);
     operator=getRandom(0,4);
     var arr=["+","-","/","*"];
     var expression=op1+arr[operator]+op2;   
@@ -73,7 +73,7 @@ var condition = true ;
 if(validText(fname)){
     condition = false;
 }
-if(validText(mname)){
+if((mname.value.length !== 0) && validText(mname)){
     condition = false;
 }
 if(validText(lname)){
@@ -115,7 +115,7 @@ if(validcountry(pcountry)){
 if(validZip(pzip)){
     condition = false;
 }
-if(validText(interests)){
+if((interests.value.length !== 0) && validText(interests)){
     condition = false;
 }
 if(checkCaptcha(captcha))
@@ -167,7 +167,7 @@ function checkCaptcha(result){
 function validText(text){
     var length=text.value.length;
     if(length > 0){
-        var patt = /^[\Sa-zA-z][a-z\sA-Z]+/;
+        var patt = /^[a-zA-Z][a-zA-Z\s]+$/;
         if(text.value.match(patt))
         {
         text.style.border="1px solid rgb(11, 243, 116)";
@@ -178,10 +178,13 @@ function validText(text){
         text.style.border="1px solid #ff0000";
         text.value="";      
         if(text.name === "pcity" || text.name === "ccity"){
-            text.placeholder = "Please Enter A Valid City !!";
+            text.placeholder = "City name shouldn't contain numbers or symbols !!";
+        }
+        else if(text.name==="interests"){
+            text.placeholder="Intetrsts shouldn't contain numbers or symbols !!";
         }
         else{
-            text.placeholder="Please Enter A Valid Name !!";
+            text.placeholder="Name shouldn't contain numbers or symbols !!";
         }
         return true;
         }
@@ -200,7 +203,7 @@ function validText(text){
 function validAdd(add){
     var length=add.value.length;
     if(length > 0){
-        var patt = /^\w[\w\.\/\,\s\(\):-]+/;
+        var patt = /^\w[\w\.\/\,\s\(\):-]+$/;
         if(add.value.match(patt))
         {
         add.style.border="1px solid rgb(11, 243, 116)";
@@ -210,7 +213,7 @@ function validAdd(add){
         {
         add.style.border="1px solid #ff0000";
         add.value="";
-        add.placeholder = "Please Enter A Valid Address !!";       
+        add.placeholder = "Address should contain only letters,numbers,:,/,.,(),- or ','";       
         return true;
         }
     }
@@ -256,7 +259,7 @@ function validPhNo(number){
         {
         number.style.border="1px solid #ff0000";
         number.value="";
-        number.placeholder = "Please Enter A Valid phone no.";
+        number.placeholder = "phone no. should be 10 digits";
         return true;
         }
     }
@@ -270,7 +273,8 @@ function validZip(number){
     var length=number.value.length;
     if(length > 0){
         var numbers = /^[0-9]+$/;
-        if(number.value.match(numbers)&& length===6)
+        var zero=/0{6}/;
+        if(number.value.match(numbers) && !(zero.test(number.value)) && length===6)
         {
         number.style.border="1px solid rgb(11, 243, 116)";
         return false;
@@ -279,7 +283,7 @@ function validZip(number){
         {
         number.style.border="1px solid #ff0000";
         number.value="";
-        number.placeholder = "Please Enter A Valid Zip code";
+        number.placeholder = "Zip code should be 6 digits and Not 6 0's";
         return true;
         }
     }
@@ -344,7 +348,7 @@ function validDate(date){
         today = year+"-"+mon+"-"+day;
         if( date.value >= today){
             date.style.border="1px solid #ff0000";
-            document.getElementById("dateerror").innerHTML="*wrong date!!";
+            document.getElementById("dateerror").innerHTML="*can't be future date!!";
             document.getElementById("dateerror").style.display="block";
             return true;
         } 
